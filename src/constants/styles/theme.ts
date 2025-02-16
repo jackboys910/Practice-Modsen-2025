@@ -1,0 +1,42 @@
+export const theme = {
+  colors: {
+    PRIMARY_TITLE: '#1E293B',
+    PRIMARY_BACKGROUND: '#F8FAFC',
+    ADD_COLUMN_BUTTON: '#475569',
+    COLUMN_TITLE: '#FFFFFF',
+    LOW_PRIORITY: '#22C55E',
+    OK_PRIORITY: '#F59E0B',
+    MEDIUM_PRIORITY: '#4F46E5',
+    HIGH_PRIORITY: '#F43F5E',
+    INITIAL_PRIORITY: '#000000',
+    INITIAL_DESCRIPTION: '#475569',
+    INITIAL_COLUMN_BACKGROUND: '#C8CDC2',
+    INITIAL_COLUMN_NUMBER: '#C1D4C8',
+  },
+  fontSizes: {
+    SMALL: '12px',
+    PRE_MEDIUM: '14px',
+    MEDIUM: '16px',
+    LARGE: '30px',
+  },
+  fontWeights: {
+    REGULAR: 400,
+    MEDIUM: 500,
+    SEMI_BOLD: 600,
+    BOLD: 700,
+    EXTRA_BOLD: 800,
+  },
+  lineHeight: {
+    SMALL: '16px',
+    PRE_MEDIUM: '20px',
+    MEDIUM: '22px',
+    EXTRA_MEDIUM: '25.6px',
+    LARGE: '38px',
+  },
+  borderRadius: {
+    SMALL: '24px',
+    PRE_MEDIUM: '32px',
+    MEDIUM: '123px',
+    LARGE: '1234px',
+  },
+};
