@@ -11,9 +11,11 @@
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "emitDeclarationOnly": true,
 
     /* Linting */
+    "composite": true,
+    "declaration": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,

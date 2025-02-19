@@ -3,9 +3,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@assets/*": ["src/assets/*"]
-    }
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"]
+    },
+    "types": ["styled-components"],
+    "typeRoots": ["node_modules/@types"]
   },
-  "files": [],
   "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
 }
