@@ -1,11 +1,15 @@
 import { ContentWrapper, PlusIcon, PlusWrapper, StyledHeader, TitleWrapper } from './index.styled';
 
-const Header: React.FC = () => {
+interface IHeaderProps {
+  onAddColumn: () => void;
+}
+
+const Header: React.FC<IHeaderProps> = ({ onAddColumn }) => {
   return (
     <StyledHeader>
       <ContentWrapper>
         <TitleWrapper>Kanban Dashboard</TitleWrapper>
-        <PlusWrapper>
+        <PlusWrapper onClick={onAddColumn}>
           <PlusIcon />
         </PlusWrapper>
       </ContentWrapper>
