@@ -115,6 +115,30 @@ export const DescriptionEditing = styled.textarea`
   border: none;
   min-height: 60px;
   max-height: 200px;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.SCROLL_BACKGROUND};
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    cursor: grab;
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: ${({ theme }) => theme.colors.SCROLL_HOVER};
+  }
 `;
 
 export const SaveButton = styled.button`

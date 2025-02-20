@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledColumn = styled.div`
+import { resolution } from '../../constants/resolutions';
+
+export const StyledColumn = styled.div<{ isFirst?: boolean }>`
   width: 308px;
   background-color: ${({ theme }) => theme.colors.PRIMARY_BACKGROUND};
   border-radius: ${({ theme }) => theme.borderRadius.PRE_MEDIUM};
@@ -8,6 +10,11 @@ export const StyledColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @media (${resolution.mobile}) {
+    width: 100%;
+    border-radius: ${({ isFirst, theme }) => (isFirst ? '0' : theme.borderRadius.PRE_MEDIUM)};
+  }
 `;
 
 export const AddTaskButton = styled.button`

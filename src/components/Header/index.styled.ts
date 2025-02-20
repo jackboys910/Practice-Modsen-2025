@@ -14,6 +14,7 @@ export const StyledHeader = styled.header`
   @media (${resolution.mobile}) {
     padding: 0 16px;
     justify-content: space-between;
+    background-color: ${({ theme }) => theme.colors.COLUMN_TITLE};
   }
 `;
 
