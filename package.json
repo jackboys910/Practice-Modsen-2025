@@ -11,9 +11,11 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "framer-motion": "^12.4.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "styled-components": "^5.3.11"
+    "styled-components": "^5.3.11",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.26.8",
