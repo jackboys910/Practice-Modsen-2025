@@ -21,25 +21,29 @@ const ColumnHeader: React.FC<IColumnHeaderProps> = ({ title, taskCount, color, o
     setIsEditing(false);
   };
 
-  const handleDeleteColumnClick = () => {
+  const handleDeleteColumn = () => {
     onDeleteColumn();
+  };
+
+  const handleTitleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewTitle(e.target.value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleTitleChange();
+    }
   };
 
   return (
     <StyledColumnHeader color={color}>
       <TaskCount color={color}>{taskCount}</TaskCount>
       {isEditing ? (
-        <TitleEditing
-          value={newTitle}
-          onChange={(e) => setNewTitle(e.target.value)}
-          onBlur={handleTitleChange}
-          onKeyDown={(e) => e.key === 'Enter' && handleTitleChange()}
-          autoFocus
-        />
+        <TitleEditing value={newTitle} onChange={handleTitleInputChange} onBlur={handleTitleChange} onKeyDown={handleKeyDown} autoFocus />
       ) : (
         <Title onClick={() => setIsEditing(true)}>{title}</Title>
       )}
-      <DeleteIconWrapper onClick={handleDeleteColumnClick}>×</DeleteIconWrapper>
+      <DeleteIconWrapper onClick={handleDeleteColumn}>×</DeleteIconWrapper>
     </StyledColumnHeader>
   );
 };

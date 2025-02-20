@@ -45,21 +45,36 @@ const Column: React.FC<IColumnProps> = ({
     onDeleteColumn(column.id);
   };
 
+  const handleDrop = () => {
+    onDrop(column.id);
+  };
+
+  const handleUpdateTitle = (newTitle: string) => {
+    onUpdateTitle(column.id, newTitle);
+  };
+
+  const handleDeleteTask = (taskId: number) => {
+    onDeleteTask(column.id, taskId);
+  };
+
+  const handleUpdateTask = (taskId: number, updatedTask: Partial<ITask>) => {
+    onUpdateTask(column.id, taskId, updatedTask);
+  };
+
+  const handleDragStart = (task: ITask) => {
+    onDragStart(column.id, task);
+  };
+
   return (
-    <StyledColumn onDragOver={onDragOver} onDrop={() => onDrop(column.id)}>
+    <StyledColumn onDragOver={onDragOver} onDrop={handleDrop}>
       <ColumnHeader
         title={column.title}
         taskCount={column.tasks.length}
         color={column.color}
-        onUpdateTitle={(newTitle) => onUpdateTitle(column.id, newTitle)}
+        onUpdateTitle={handleUpdateTitle}
         onDeleteColumn={handleDeleteColumn}
       />
-      <TaskList
-        tasks={column.tasks}
-        onDeleteTask={(taskId) => onDeleteTask(column.id, taskId)}
-        onUpdateTask={(taskId, updatedTask) => onUpdateTask(column.id, taskId, updatedTask)}
-        onDragStart={(task) => onDragStart(column.id, task)}
-      />
+      <TaskList tasks={column.tasks} onDeleteTask={handleDeleteTask} onUpdateTask={handleUpdateTask} onDragStart={handleDragStart} />
       <AddTaskButton onClick={handleAddTask}>
         <AddTaskContent>
           <AddTaskTextWrapper color={column.color}>Add task...</AddTaskTextWrapper>
