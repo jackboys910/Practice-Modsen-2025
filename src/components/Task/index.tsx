@@ -20,9 +20,10 @@ interface ITaskProps {
   task: ITask;
   onDeleteTask: (taskId: number) => void;
   onUpdateTask: (taskId: number, updatedTask: Partial<ITask>) => void;
+  onDragStart: (task: ITask) => void;
 }
 
-const Task: React.FC<ITaskProps> = ({ task, onDeleteTask, onUpdateTask }) => {
+const Task: React.FC<ITaskProps> = ({ task, onDeleteTask, onUpdateTask, onDragStart }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
@@ -34,7 +35,7 @@ const Task: React.FC<ITaskProps> = ({ task, onDeleteTask, onUpdateTask }) => {
   };
 
   return (
-    <StyledTask>
+    <StyledTask draggable onDragStart={() => onDragStart(task)}>
       {isEditing ? (
         <>
           <EditingInfoWrapper>

@@ -26,6 +26,7 @@ function MainPage() {
           { id: 3, title: 'Done', color: theme.colors.LOW_PRIORITY, tasks: [], isDefaultTitle: false },
         ];
   });
+  const [draggedTask, setDraggedTask] = useState<{ columnId: number; task: ITask } | null>(null);
 
   useEffect(() => {
     localStorage.setItem('kanban-columns', JSON.stringify(columns));
@@ -96,6 +97,37 @@ function MainPage() {
     );
   };
 
+  const handleDragStart = (columnId: number, task: ITask) => {
+    setDraggedTask({ columnId, task });
+  };
+
+  const handleDrop = (targetColumnId: number) => {
+    if (draggedTask) {
+      const { columnId: sourceColumnId, task } = draggedTask;
+
+      if (sourceColumnId !== targetColumnId) {
+        setColumns((prevColumns) =>
+          prevColumns.map((column) => {
+            if (column.id === sourceColumnId) {
+              return { ...column, tasks: column.tasks.filter((t) => t.id !== task.id) };
+            }
+
+            if (column.id === targetColumnId) {
+              return { ...column, tasks: [...column.tasks, task] };
+            }
+
+            return column;
+          })
+        );
+      }
+    }
+    setDraggedTask(null);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <Header onAddColumn={addColumn} />
@@ -110,6 +142,9 @@ function MainPage() {
               onDeleteTask={deleteTask}
               onUpdateTask={updateTask}
               onDeleteColumn={removeColumn}
+              onDragStart={handleDragStart}
+              onDrop={handleDrop}
+              onDragOver={handleDragOver}
             />
           ))}
         </StyledColumnList>
