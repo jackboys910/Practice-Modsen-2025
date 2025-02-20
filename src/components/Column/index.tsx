@@ -15,9 +15,22 @@ interface IColumnProps {
   onDeleteTask: (columnId: number, taskId: number) => void;
   onUpdateTask: (columnId: number, taskId: number, updatedTask: Partial<ITask>) => void;
   onDeleteColumn: (columnId: number) => void;
+  onDragStart: (columnId: number, task: ITask) => void;
+  onDrop: (targetColumnId: number) => void;
+  onDragOver: (e: React.DragEvent) => void;
 }
 
-const Column: React.FC<IColumnProps> = ({ column, onUpdateTitle, onAddTask, onDeleteTask, onUpdateTask, onDeleteColumn }) => {
+const Column: React.FC<IColumnProps> = ({
+  column,
+  onUpdateTitle,
+  onAddTask,
+  onDeleteTask,
+  onUpdateTask,
+  onDeleteColumn,
+  onDragStart,
+  onDrop,
+  onDragOver,
+}) => {
   const handleAddTask = () => {
     const newTask: ITask = {
       id: Date.now(),
@@ -33,7 +46,7 @@ const Column: React.FC<IColumnProps> = ({ column, onUpdateTitle, onAddTask, onDe
   };
 
   return (
-    <StyledColumn>
+    <StyledColumn onDragOver={onDragOver} onDrop={() => onDrop(column.id)}>
       <ColumnHeader
         title={column.title}
         taskCount={column.tasks.length}
@@ -45,6 +58,7 @@ const Column: React.FC<IColumnProps> = ({ column, onUpdateTitle, onAddTask, onDe
         tasks={column.tasks}
         onDeleteTask={(taskId) => onDeleteTask(column.id, taskId)}
         onUpdateTask={(taskId, updatedTask) => onUpdateTask(column.id, taskId, updatedTask)}
+        onDragStart={(task) => onDragStart(column.id, task)}
       />
       <AddTaskButton onClick={handleAddTask}>
         <AddTaskContent>
