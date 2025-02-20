@@ -42,6 +42,10 @@ function MainPage() {
     setColumns([...columns, newColumn]);
   };
 
+  const removeColumn = (columnId: number) => {
+    setColumns((prevColumns) => prevColumns.filter((column) => column.id !== columnId));
+  };
+
   const updateColumnTitle = (id: number, newTitle: string) => {
     setColumns((prevColumns) =>
       prevColumns.map((column) => {
@@ -105,6 +109,7 @@ function MainPage() {
               onAddTask={addTask}
               onDeleteTask={deleteTask}
               onUpdateTask={updateTask}
+              onDeleteColumn={removeColumn}
             />
           ))}
         </StyledColumnList>

@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
-import { AddIcon, AddIconWrapper, StyledColumnHeader, TaskCount, Title, TitleEditing } from './index.styled';
+import { DeleteIconWrapper, StyledColumnHeader, TaskCount, Title, TitleEditing } from './index.styled';
 
 interface IColumnHeaderProps {
   title: string;
   taskCount: number;
   color: string;
   onUpdateTitle: (newTitle: string) => void;
-  onAddTask: () => void;
+  onDeleteColumn: () => void;
 }
 
-const ColumnHeader: React.FC<IColumnHeaderProps> = ({ title, taskCount, color, onUpdateTitle, onAddTask }) => {
+const ColumnHeader: React.FC<IColumnHeaderProps> = ({ title, taskCount, color, onUpdateTitle, onDeleteColumn }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
 
@@ -21,8 +21,8 @@ const ColumnHeader: React.FC<IColumnHeaderProps> = ({ title, taskCount, color, o
     setIsEditing(false);
   };
 
-  const handleAddTaskClick = () => {
-    onAddTask();
+  const handleDeleteColumnClick = () => {
+    onDeleteColumn();
   };
 
   return (
@@ -39,9 +39,7 @@ const ColumnHeader: React.FC<IColumnHeaderProps> = ({ title, taskCount, color, o
       ) : (
         <Title onClick={() => setIsEditing(true)}>{title}</Title>
       )}
-      <AddIconWrapper onClick={handleAddTaskClick}>
-        <AddIcon />
-      </AddIconWrapper>
+      <DeleteIconWrapper onClick={handleDeleteColumnClick}>×</DeleteIconWrapper>
     </StyledColumnHeader>
   );
 };
