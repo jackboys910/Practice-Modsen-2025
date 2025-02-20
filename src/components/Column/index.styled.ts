@@ -25,10 +25,10 @@ export const AddTaskContent = styled.div`
   justify-content: space-between;
 `;
 
-export const AddTaskTextWrapper = styled.div`
+export const AddTaskTextWrapper = styled.div<{ color: string }>`
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius.LARGE};
-  background-color: ${({ theme }) => theme.colors.MEDIUM_PRIORITY_BACKGROUND};
+  background-color: ${({ theme, color }) => theme.colors[color.toUpperCase() + '_BACKGROUND'] || theme.colors.MEDIUM_PRIORITY_BACKGROUND};
   color: ${({ color }) => color};
   padding: 4px 8px 4px 8px;
   font-family: 'PlusJakartaSansSemiBold';

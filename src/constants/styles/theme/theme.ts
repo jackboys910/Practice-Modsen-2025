@@ -18,6 +18,7 @@ export const theme = {
     INITIAL_DESCRIPTION: '#475569',
     INITIAL_COLUMN_BACKGROUND: '#C8CDC2',
     INITIAL_COLUMN_NUMBER: '#C1D4C8',
+    ERROR_TEXT: '#FF5454',
   },
   fontSizes: {
     SMALL: '12px',
