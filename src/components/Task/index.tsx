@@ -34,19 +34,39 @@ const Task: React.FC<ITaskProps> = ({ task, onDeleteTask, onUpdateTask, onDragSt
     setIsEditing(false);
   };
 
+  const handleDragStart = () => {
+    onDragStart(task);
+  };
+
+  const handleDeleteTask = () => {
+    onDeleteTask(task.id);
+  };
+
+  const handlePriorityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setPriority(e.target.value as 'Low' | 'Medium' | 'High' | undefined);
+  };
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
+
+  const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(e.target.value);
+  };
+
   return (
-    <StyledTask draggable onDragStart={() => onDragStart(task)}>
+    <StyledTask draggable onDragStart={handleDragStart}>
       {isEditing ? (
         <>
           <EditingInfoWrapper>
-            <PrioritySelect value={priority || ''} onChange={(e) => setPriority(e.target.value as 'Low' | 'Medium' | 'High' | undefined)}>
+            <PrioritySelect value={priority || ''} onChange={handlePriorityChange}>
               <PriorityOption value=''>No Priority</PriorityOption>
               <PriorityOption value='Low'>Low</PriorityOption>
               <PriorityOption value='Medium'>Medium</PriorityOption>
               <PriorityOption value='High'>High</PriorityOption>
             </PrioritySelect>
-            <TitleEditing value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Task title' />
-            <DescriptionEditing value={description} onChange={(e) => setDescription(e.target.value)} placeholder='Add description' />
+            <TitleEditing value={title} onChange={handleTitleChange} placeholder='Task title' />
+            <DescriptionEditing value={description} onChange={handleDescriptionChange} placeholder='Add description' />
           </EditingInfoWrapper>
           <SaveButton onClick={handleSave}>Save</SaveButton>
         </>
@@ -56,7 +76,7 @@ const Task: React.FC<ITaskProps> = ({ task, onDeleteTask, onUpdateTask, onDragSt
             <Priority priority={priority} onClick={() => setIsEditing(true)}>
               {priority || 'No Priority'}
             </Priority>
-            <DeleteButton onClick={() => onDeleteTask(task.id)}>×</DeleteButton>
+            <DeleteButton onClick={handleDeleteTask}>×</DeleteButton>
           </PriorityWrapper>
           <Title onClick={() => setIsEditing(true)}>{title}</Title>
           <Description onClick={() => setIsEditing(true)}>{description}</Description>
