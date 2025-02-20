@@ -14,9 +14,10 @@ interface IColumnProps {
   onAddTask: (columnId: number, task: ITask) => void;
   onDeleteTask: (columnId: number, taskId: number) => void;
   onUpdateTask: (columnId: number, taskId: number, updatedTask: Partial<ITask>) => void;
+  onDeleteColumn: (columnId: number) => void;
 }
 
-const Column: React.FC<IColumnProps> = ({ column, onUpdateTitle, onAddTask, onDeleteTask, onUpdateTask }) => {
+const Column: React.FC<IColumnProps> = ({ column, onUpdateTitle, onAddTask, onDeleteTask, onUpdateTask, onDeleteColumn }) => {
   const handleAddTask = () => {
     const newTask: ITask = {
       id: Date.now(),
@@ -27,6 +28,10 @@ const Column: React.FC<IColumnProps> = ({ column, onUpdateTitle, onAddTask, onDe
     onAddTask(column.id, newTask);
   };
 
+  const handleDeleteColumn = () => {
+    onDeleteColumn(column.id);
+  };
+
   return (
     <StyledColumn>
       <ColumnHeader
@@ -34,7 +39,7 @@ const Column: React.FC<IColumnProps> = ({ column, onUpdateTitle, onAddTask, onDe
         taskCount={column.tasks.length}
         color={column.color}
         onUpdateTitle={(newTitle) => onUpdateTitle(column.id, newTitle)}
-        onAddTask={handleAddTask}
+        onDeleteColumn={handleDeleteColumn}
       />
       <TaskList
         tasks={column.tasks}

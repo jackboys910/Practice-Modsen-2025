@@ -50,28 +50,14 @@ export const TitleEditing = styled.input`
   width: 191px;
 `;
 
-export const AddIconWrapper = styled.button`
+export const DeleteIconWrapper = styled.button`
   width: 24px;
   height: 24px;
   border: none;
   position: relative;
   background-color: inherit;
-`;
-
-export const AddIcon = styled.span`
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: 18.75px;
-  height: 2px;
-  background-color: ${({ theme }) => theme.colors.COLUMN_TITLE};
-  &::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 18.75px;
-    background-color: ${({ theme }) => theme.colors.COLUMN_TITLE};
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+  font-size: ${({ theme }) => theme.fontSizes.LARGE};
+  color: ${({ theme }) => theme.colors.COLUMN_TITLE};
+  position: relative;
+  top: -5px;
 `;
