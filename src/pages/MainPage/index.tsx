@@ -133,10 +133,11 @@ function MainPage() {
       <Header onAddColumn={addColumn} />
       <StyledMain>
         <StyledColumnList>
-          {columns.map((column) => (
+          {columns.map((column, index) => (
             <Column
               key={column.id}
               column={column}
+              isFirst={index === 0}
               onUpdateTitle={updateColumnTitle}
               onAddTask={addTask}
               onDeleteTask={deleteTask}

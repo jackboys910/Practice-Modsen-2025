@@ -10,6 +10,7 @@ interface IColumnProps {
     color: string;
     tasks: ITask[];
   };
+  isFirst?: boolean;
   onUpdateTitle: (id: number, newTitle: string) => void;
   onAddTask: (columnId: number, task: ITask) => void;
   onDeleteTask: (columnId: number, taskId: number) => void;
@@ -22,6 +23,7 @@ interface IColumnProps {
 
 const Column: React.FC<IColumnProps> = ({
   column,
+  isFirst,
   onUpdateTitle,
   onAddTask,
   onDeleteTask,
@@ -66,7 +68,7 @@ const Column: React.FC<IColumnProps> = ({
   };
 
   return (
-    <StyledColumn onDragOver={onDragOver} onDrop={handleDrop}>
+    <StyledColumn isFirst={isFirst} onDragOver={onDragOver} onDrop={handleDrop}>
       <ColumnHeader
         title={column.title}
         taskCount={column.tasks.length}
