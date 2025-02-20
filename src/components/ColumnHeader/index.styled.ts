@@ -35,12 +35,12 @@ export const Title = styled.h3`
   letter-spacing: -0.7%;
 `;
 
-export const TitleEditing = styled.input`
+export const TitleEditing = styled.input<{ titleError: boolean }>`
   font-family: 'PlusJakartaSansBold';
   font-size: ${({ theme }) => theme.fontSizes.MEDIUM};
   font-weight: ${({ theme }) => theme.fontWeights.BOLD};
   line-height: ${({ theme }) => theme.lineHeight.MEDIUM};
-  color: ${({ theme }) => theme.colors.COLUMN_TITLE};
+  color: ${({ titleError, theme }) => (titleError ? theme.colors.HIGH_PRIORITY : theme.colors.COLUMN_TITLE)};
   flex: 1;
   letter-spacing: -0.7%;
   outline: none;
@@ -51,7 +51,7 @@ export const TitleEditing = styled.input`
 `;
 
 export const DeleteIconWrapper = styled.button`
-  width: 24px;
+  width: 26.2px;
   height: 24px;
   border: none;
   position: relative;
