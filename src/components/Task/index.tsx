@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { FiEdit } from 'react-icons/fi';
 
 import { ITask } from '../../interfaces/ITask';
 import {
   DeleteButton,
   Description,
   DescriptionEditing,
+  EditButton,
   EditingInfoWrapper,
   Priority,
   PriorityOption,
@@ -77,13 +79,16 @@ const Task: React.FC<ITaskProps> = ({ task, onDeleteTask, onUpdateTask, onDragSt
       ) : (
         <>
           <PriorityWrapper>
-            <Priority priority={priority} onClick={handleEditMode}>
-              {priority || 'No Priority'}
-            </Priority>
-            <DeleteButton onClick={handleDeleteTask}>×</DeleteButton>
+            <Priority priority={priority}>{priority || 'No Priority'}</Priority>
+            <div>
+              <EditButton onClick={handleEditMode}>
+                <FiEdit size={15} />
+              </EditButton>
+              <DeleteButton onClick={handleDeleteTask}>×</DeleteButton>
+            </div>
           </PriorityWrapper>
-          <Title onClick={handleEditMode}>{title}</Title>
-          <Description onClick={handleEditMode}>{description}</Description>
+          <Title>{title}</Title>
+          <Description>{description}</Description>
         </>
       )}
     </StyledTask>
