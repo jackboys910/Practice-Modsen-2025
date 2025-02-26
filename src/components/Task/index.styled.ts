@@ -172,3 +172,14 @@ export const DeleteButton = styled.button`
     color: red;
   }
 `;
+
+export const EditButton = styled.button`
+  background: none;
+  border: none;
+  position: relative;
+  bottom: 6px;
+  color: ${({ theme }) => theme.colors.SCROLL_BACKGROUND};
+  &:hover {
+    color: ${({ theme }) => theme.colors.SCROLL_HOVER};
+  }
+`;
