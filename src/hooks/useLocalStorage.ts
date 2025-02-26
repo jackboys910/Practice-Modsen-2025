@@ -57,7 +57,9 @@ export const useLocalStorage = (initColumns: IColumn[]) => {
   const addTask = (columnId: number, task: ITask) => {
     setColumns(
       columns.map((column) =>
-        column.id === columnId ? { ...column, tasks: [...column.tasks, { ...task, priority: task.priority || 'Priority' }] } : column
+        column.id === columnId
+          ? { ...column, tasks: [...column.tasks, { ...task, id: generateUniqueId(), priority: task.priority || 'Priority' }] }
+          : column
       )
     );
   };
@@ -99,14 +101,11 @@ export const useLocalStorage = (initColumns: IColumn[]) => {
         }
 
         if (column.id === targetColumnId) {
-          const taskExists = column.tasks.some((t) => t.id === task.id);
-          if (!taskExists) {
-            const newTask = { ...task, id: generateUniqueId() };
-            return {
-              ...column,
-              tasks: [...column.tasks, newTask],
-            };
-          }
+          const newTask = { ...task, id: generateUniqueId() };
+          return {
+            ...column,
+            tasks: [...column.tasks, newTask],
+          };
         }
 
         return column;
