@@ -3,7 +3,7 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 
 import { titleValidationSchema } from '../../utils/validation/titleValidation';
-import { DeleteIconWrapper, StyledColumnHeader, TaskCount, Title, TitleEditing } from './index.styled';
+import { DeleteIconWrapper, ErrorMessage, ErrorWrapper, StyledColumnHeader, TaskCount, Title, TitleEditing } from './index.styled';
 
 interface IColumnHeaderProps {
   title: string;
@@ -70,14 +70,17 @@ const ColumnHeader: React.FC<IColumnHeaderProps> = ({ title, taskCount, color, o
       <TaskCount color={color}>{taskCount}</TaskCount>
       {isEditing ? (
         <motion.div animate={isShaking ? { x: [-10, 10, -10, 10, 0] } : {}} transition={{ duration: 0.3 }}>
-          <TitleEditing
-            value={newTitle}
-            onChange={handleTitleInputChange}
-            onBlur={handleTitleChange}
-            onKeyDown={handleKeyDown}
-            titleError={!!titleError}
-            autoFocus
-          />
+          <ErrorWrapper>
+            <TitleEditing
+              value={newTitle}
+              onChange={handleTitleInputChange}
+              onBlur={handleTitleChange}
+              onKeyDown={handleKeyDown}
+              titleError={!!titleError}
+              autoFocus
+            />
+            {titleError && <ErrorMessage>{titleError}</ErrorMessage>}
+          </ErrorWrapper>
         </motion.div>
       ) : (
         <Title onClick={toggleEditMode}>{title}</Title>
