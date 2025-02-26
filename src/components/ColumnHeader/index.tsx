@@ -61,6 +61,10 @@ const ColumnHeader: React.FC<IColumnHeaderProps> = ({ title, taskCount, color, o
     }
   };
 
+  const toggleEditMode = () => {
+    setIsEditing(true);
+  };
+
   return (
     <StyledColumnHeader color={color}>
       <TaskCount color={color}>{taskCount}</TaskCount>
@@ -76,7 +80,7 @@ const ColumnHeader: React.FC<IColumnHeaderProps> = ({ title, taskCount, color, o
           />
         </motion.div>
       ) : (
-        <Title onClick={() => setIsEditing(true)}>{title}</Title>
+        <Title onClick={toggleEditMode}>{title}</Title>
       )}
       <DeleteIconWrapper onClick={handleDeleteColumn}>×</DeleteIconWrapper>
     </StyledColumnHeader>
