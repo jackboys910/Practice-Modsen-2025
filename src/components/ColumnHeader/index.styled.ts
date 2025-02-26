@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { resolution } from '../../constants/resolutions';
+
 export const StyledColumnHeader = styled.div<{ color: string }>`
   display: flex;
   align-items: center;
@@ -48,6 +50,34 @@ export const TitleEditing = styled.input<{ titleError: boolean }>`
   background-color: transparent;
   margin: 15px 0 15px -2px;
   width: 191px;
+
+  @media (${resolution.mobile}) {
+    width: 80vw;
+  }
+
+  @media (max-width: 650px) {
+    width: 78vw;
+  }
+
+  @media (max-width: 600px) {
+    width: 76vw;
+  }
+
+  @media (max-width: 550px) {
+    width: 74vw;
+  }
+
+  @media (max-width: 500px) {
+    width: 71vw;
+  }
+
+  @media (max-width: 450px) {
+    width: 68vw;
+  }
+
+  @media (max-width: 410px) {
+    width: 65vw;
+  }
 `;
 
 export const DeleteIconWrapper = styled.button`
@@ -58,6 +88,18 @@ export const DeleteIconWrapper = styled.button`
   background-color: inherit;
   font-size: ${({ theme }) => theme.fontSizes.LARGE};
   color: ${({ theme }) => theme.colors.COLUMN_TITLE};
-  position: relative;
   top: -5px;
+`;
+
+export const ErrorWrapper = styled.div`
+  position: relative;
+`;
+
+export const ErrorMessage = styled.p`
+  font-family: 'PlusJakartaSansRegular';
+  font-size: ${({ theme }) => theme.fontSizes.SMALL};
+  position: absolute;
+  top: 35px;
+  left: -25px;
+  width: 250px;
 `;
