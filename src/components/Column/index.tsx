@@ -1,4 +1,5 @@
 import { ITask } from '../../interfaces/ITask';
+import generateUniqueId from '../../utils/generateUniqueId';
 import ColumnHeader from '../ColumnHeader';
 import TaskList from '../TaskList';
 import { AddTaskButton, AddTaskContent, AddTaskTextWrapper, StyledColumn } from './index.styled';
@@ -35,7 +36,7 @@ const Column: React.FC<IColumnProps> = ({
 }) => {
   const handleAddTask = () => {
     const newTask: ITask = {
-      id: Date.now(),
+      id: generateUniqueId(),
       title: 'Task title',
       description: 'Add description',
       priority: undefined,

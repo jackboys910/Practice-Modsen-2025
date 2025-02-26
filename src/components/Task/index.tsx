@@ -54,6 +54,10 @@ const Task: React.FC<ITaskProps> = ({ task, onDeleteTask, onUpdateTask, onDragSt
     setDescription(e.target.value);
   };
 
+  const handleEditMode = () => {
+    setIsEditing(true);
+  };
+
   return (
     <StyledTask draggable onDragStart={handleDragStart}>
       {isEditing ? (
@@ -73,13 +77,13 @@ const Task: React.FC<ITaskProps> = ({ task, onDeleteTask, onUpdateTask, onDragSt
       ) : (
         <>
           <PriorityWrapper>
-            <Priority priority={priority} onClick={() => setIsEditing(true)}>
+            <Priority priority={priority} onClick={handleEditMode}>
               {priority || 'No Priority'}
             </Priority>
             <DeleteButton onClick={handleDeleteTask}>×</DeleteButton>
           </PriorityWrapper>
-          <Title onClick={() => setIsEditing(true)}>{title}</Title>
-          <Description onClick={() => setIsEditing(true)}>{description}</Description>
+          <Title onClick={handleEditMode}>{title}</Title>
+          <Description onClick={handleEditMode}>{description}</Description>
         </>
       )}
     </StyledTask>
