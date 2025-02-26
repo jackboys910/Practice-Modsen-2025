@@ -1,7 +1,5 @@
-let taskIdCounter = 1;
-
 const generateUniqueId = () => {
-  return taskIdCounter++;
+  return parseInt(`${Date.now()}${Math.random().toString().substring(2)}`, 10);
 };
 
 export default generateUniqueId;
