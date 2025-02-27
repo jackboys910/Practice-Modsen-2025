@@ -1,6 +1,6 @@
 Дерюгин Георгий
 
-**[deploy](jackboys910-kanban-board.netlify.app)** - ссылка на деплой проекта.
+**[deploy](https://jackboys910-kanban-board.netlify.app/)** - ссылка на деплой проекта.
 
 # Тестовое задание Kanban board
 
