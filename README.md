@@ -1,6 +1,6 @@
 Дерюгин Георгий
 
-**[deploy](https://jackboys910.github.io/Practice-Modsen-2025/)** - ссылка на деплой проекта.
+**[deploy](jackboys910-kanban-board.netlify.app)** - ссылка на деплой проекта.
 
 # Тестовое задание Kanban board
 
