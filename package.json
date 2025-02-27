@@ -8,8 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "postinstall": "husky install",
-    "deploy": "vite build && vite gh-pages"
+    "postinstall": "husky install"
   },
   "dependencies": {
     "framer-motion": "^12.4.7",
