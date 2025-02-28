@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { resolution } from '../../constants/resolutions';
+import { resolution } from '@constants/resolutions';
 
 export const StyledMain = styled.main`
   flex: 1;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { resolution } from '../../constants/resolutions';
+import { resolution } from '@constants/resolutions';
 
 export const StyledColumnHeader = styled.div<{ color: string }>`
   display: flex;

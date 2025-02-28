@@ -1,9 +1,10 @@
+import { createGlobalStyle } from 'styled-components';
+
 import PlusJakartaSansBold from '@assets/fonts/PlusJakartaSans/Bold/PlusJakartaSans-Bold.ttf';
 import PlusJakartaSansExtraBold from '@assets/fonts/PlusJakartaSans/ExtraBold/PlusJakartaSans-ExtraBold.ttf';
 import PlusJakartaSansMedium from '@assets/fonts/PlusJakartaSans/Medium/PlusJakartaSans-Medium.ttf';
 import PlusJakartaSansRegular from '@assets/fonts/PlusJakartaSans/Regular/PlusJakartaSans-Regular.ttf';
 import PlusJakartaSansSemiBold from '@assets/fonts/PlusJakartaSans/SemiBold/PlusJakartaSans-SemiBold.ttf';
-import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   body, html, #root {

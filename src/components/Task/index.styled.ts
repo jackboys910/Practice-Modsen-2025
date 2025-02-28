@@ -183,3 +183,5 @@ export const EditButton = styled.button`
     color: ${({ theme }) => theme.colors.SCROLL_HOVER};
   }
 `;
+
+export const ButtonWrapper = styled.div``;

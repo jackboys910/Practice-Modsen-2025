@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { resolution } from '../../constants/resolutions';
+import { resolution } from '@constants/resolutions';
 
 export const StyledHeader = styled.header`
   width: 100%;
@@ -129,3 +129,5 @@ export const MenuButton = styled.button`
     background-color: ${({ theme }) => theme.colors.ADD_COLUMN_BUTTON_HOVER};
   }
 `;
+
+export const OneStripe = styled.div``;
