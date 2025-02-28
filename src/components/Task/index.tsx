@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { FiEdit } from 'react-icons/fi';
 
+import { CROSS_ICON, PRIORITIES, PRIORITY_OPTIONS, SAVE_TEXT } from '@constants/editTaskText';
+
 import { ITask } from '../../interfaces/ITask';
 import {
+  ButtonWrapper,
   DeleteButton,
   Description,
   DescriptionEditing,
@@ -23,6 +26,11 @@ interface ITaskProps {
   onDeleteTask: (taskId: number) => void;
   onUpdateTask: (taskId: number, updatedTask: Partial<ITask>) => void;
   onDragStart: (task: ITask) => void;
+}
+
+interface IOption {
+  value: string;
+  label: string;
 }
 
 const Task: React.FC<ITaskProps> = ({ task, onDeleteTask, onUpdateTask, onDragStart }) => {
@@ -66,26 +74,27 @@ const Task: React.FC<ITaskProps> = ({ task, onDeleteTask, onUpdateTask, onDragSt
         <>
           <EditingInfoWrapper>
             <PrioritySelect value={priority || ''} onChange={handlePriorityChange}>
-              <PriorityOption value=''>No Priority</PriorityOption>
-              <PriorityOption value='Low'>Low</PriorityOption>
-              <PriorityOption value='Medium'>Medium</PriorityOption>
-              <PriorityOption value='High'>High</PriorityOption>
+              {PRIORITY_OPTIONS.map((option: IOption) => (
+                <PriorityOption key={option.value} value={option.value}>
+                  {option.label}
+                </PriorityOption>
+              ))}
             </PrioritySelect>
             <TitleEditing value={title} onChange={handleTitleChange} placeholder='Task title' />
             <DescriptionEditing value={description} onChange={handleDescriptionChange} placeholder='Add description' />
           </EditingInfoWrapper>
-          <SaveButton onClick={handleSave}>Save</SaveButton>
+          <SaveButton onClick={handleSave}>{SAVE_TEXT}</SaveButton>
         </>
       ) : (
         <>
           <PriorityWrapper>
-            <Priority priority={priority}>{priority || 'No Priority'}</Priority>
-            <div>
+            <Priority priority={priority}>{priority || PRIORITIES.NO_PRIORITY}</Priority>
+            <ButtonWrapper>
               <EditButton onClick={handleEditMode}>
                 <FiEdit size={15} />
               </EditButton>
-              <DeleteButton onClick={handleDeleteTask}>×</DeleteButton>
-            </div>
+              <DeleteButton onClick={handleDeleteTask}>{CROSS_ICON}</DeleteButton>
+            </ButtonWrapper>
           </PriorityWrapper>
           <Title>{title}</Title>
           <Description>{description}</Description>

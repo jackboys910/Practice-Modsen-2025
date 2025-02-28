@@ -1,17 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import { theme } from '../constants/styles/theme/theme';
-import { ITask } from '../interfaces/ITask';
-import generateUniqueId from '../utils/generateUniqueId';
-import getColorForTitle from '../utils/getColorForTitle';
+import generateUniqueId from '@utils/generateUniqueId';
+import getColorForTitle from '@utils/getColorForTitle';
+import { theme } from '@constants/styles/theme/theme';
 
-interface IColumn {
-  id: number;
-  title: string;
-  color: string;
-  tasks: ITask[];
-  isDefaultTitle: boolean;
-}
+import { IColumn } from '../interfaces/IColumn';
+import { ITask } from '../interfaces/ITask';
 
 export const useLocalStorage = (initColumns: IColumn[]) => {
   const [columns, setColumns] = useState<IColumn[]>(() => {

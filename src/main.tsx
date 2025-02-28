@@ -2,10 +2,10 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 
-import ErrorBoundary from './components/ErrorBoundary';
-import { GlobalStyles } from './constants/styles/GlobalStyles';
-import { theme } from './constants/styles/theme/theme';
-import MainPage from './pages/MainPage';
+import ErrorBoundary from '@components/ErrorBoundary';
+import MainPage from '@pages/MainPage';
+import { GlobalStyles } from '@constants/styles/GlobalStyles';
+import { theme } from '@constants/styles/theme/theme';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

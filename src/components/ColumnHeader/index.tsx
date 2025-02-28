@@ -1,8 +1,10 @@
-import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import * as Yup from 'yup';
 
-import { titleValidationSchema } from '../../utils/validation/titleValidation';
+import { titleValidationSchema } from '@utils/validation/titleValidation';
+import { CROSS_ICON } from '@constants/editTaskText';
+
 import { DeleteIconWrapper, ErrorMessage, ErrorWrapper, StyledColumnHeader, TaskCount, Title, TitleEditing } from './index.styled';
 
 interface IColumnHeaderProps {
@@ -85,7 +87,7 @@ const ColumnHeader: React.FC<IColumnHeaderProps> = ({ title, taskCount, color, o
       ) : (
         <Title onClick={toggleEditMode}>{title}</Title>
       )}
-      <DeleteIconWrapper onClick={handleDeleteColumn}>×</DeleteIconWrapper>
+      <DeleteIconWrapper onClick={handleDeleteColumn}>{CROSS_ICON}</DeleteIconWrapper>
     </StyledColumnHeader>
   );
 };

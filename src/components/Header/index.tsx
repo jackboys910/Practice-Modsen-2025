@@ -1,7 +1,18 @@
 import { useState } from 'react';
 
-import { ContentWrapper, HamburgerIcon, Menu, MenuButton, PlusIcon, PlusWrapper, StyledHeader, TitleWrapper } from './index.styled';
+import { HEADER_TEXT } from '@constants/headerText';
 
+import {
+  ContentWrapper,
+  HamburgerIcon,
+  Menu,
+  MenuButton,
+  OneStripe,
+  PlusIcon,
+  PlusWrapper,
+  StyledHeader,
+  TitleWrapper,
+} from './index.styled';
 interface IHeaderProps {
   onAddColumn: () => void;
 }
@@ -16,11 +27,11 @@ const Header: React.FC<IHeaderProps> = ({ onAddColumn }) => {
   return (
     <StyledHeader>
       <ContentWrapper>
-        <TitleWrapper>Kanban Dashboard</TitleWrapper>
+        <TitleWrapper>{HEADER_TEXT.TITLE}</TitleWrapper>
         <HamburgerIcon onClick={toggleMenu}>
-          <div />
-          <div />
-          <div />
+          <OneStripe />
+          <OneStripe />
+          <OneStripe />
         </HamburgerIcon>
         <PlusWrapper onClick={onAddColumn}>
           <PlusIcon />
@@ -28,7 +39,7 @@ const Header: React.FC<IHeaderProps> = ({ onAddColumn }) => {
       </ContentWrapper>
       {isMenuOpen && (
         <Menu>
-          <MenuButton onClick={onAddColumn}>Добавить колонку</MenuButton>
+          <MenuButton onClick={onAddColumn}>{HEADER_TEXT.ADD_COLUMN}</MenuButton>
         </Menu>
       )}
     </StyledHeader>

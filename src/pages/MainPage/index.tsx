@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
-import Column from '../../components/Column';
-import Header from '../../components/Header';
-import initialColumns from '../../constants/initialColumns';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import Column from '@components/Column';
+import Header from '@components/Header';
+import initialColumns from '@constants/initialColumns';
+import { useLocalStorage } from '@hooks/useLocalStorage';
+
+import { IColumn } from '../../interfaces/IColumn';
 import { ITask } from '../../interfaces/ITask';
 import { StyledColumnList, StyledMain } from './index.styled';
 
@@ -36,7 +38,7 @@ const MainPage: React.FC = () => {
       <Header onAddColumn={addColumn} />
       <StyledMain>
         <StyledColumnList>
-          {columns.map((column, index) => (
+          {columns.map((column: IColumn, index: number) => (
             <Column
               key={column.id}
               column={column}

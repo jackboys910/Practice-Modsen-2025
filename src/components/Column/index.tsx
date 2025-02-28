@@ -1,5 +1,7 @@
+import generateUniqueId from '@utils/generateUniqueId';
+import { ADD_TASK_TEXT, INITIAL_TASK_TEXT } from '@constants/taskText';
+
 import { ITask } from '../../interfaces/ITask';
-import generateUniqueId from '../../utils/generateUniqueId';
 import ColumnHeader from '../ColumnHeader';
 import TaskList from '../TaskList';
 import { AddTaskButton, AddTaskContent, AddTaskTextWrapper, StyledColumn } from './index.styled';
@@ -37,8 +39,8 @@ const Column: React.FC<IColumnProps> = ({
   const handleAddTask = () => {
     const newTask: ITask = {
       id: generateUniqueId(),
-      title: 'Task title',
-      description: 'Add description',
+      title: INITIAL_TASK_TEXT.title,
+      description: INITIAL_TASK_TEXT.description,
       priority: undefined,
     };
     onAddTask(column.id, newTask);
@@ -80,7 +82,7 @@ const Column: React.FC<IColumnProps> = ({
       <TaskList tasks={column.tasks} onDeleteTask={handleDeleteTask} onUpdateTask={handleUpdateTask} onDragStart={handleDragStart} />
       <AddTaskButton onClick={handleAddTask}>
         <AddTaskContent>
-          <AddTaskTextWrapper color={column.color}>Add task...</AddTaskTextWrapper>
+          <AddTaskTextWrapper color={column.color}>{ADD_TASK_TEXT}</AddTaskTextWrapper>
         </AddTaskContent>
       </AddTaskButton>
     </StyledColumn>

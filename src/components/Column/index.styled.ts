@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { resolution } from '../../constants/resolutions';
+import { resolution } from '@constants/resolutions';
 
 export const StyledColumn = styled.div<{ isFirst?: boolean }>`
   width: 308px;

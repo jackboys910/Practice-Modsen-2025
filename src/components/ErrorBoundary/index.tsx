@@ -1,5 +1,7 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
 
+import { ERROR_MESSAGES } from '@constants/errorMessages';
+
 import { StyledErrorBoundaryWrapper, StyledErrorDetails, StyledErrorMessage, StyledRetryButton } from './index.styled';
 
 interface IErrorBoundaryProps {
@@ -37,9 +39,9 @@ class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundaryState> 
       return (
         <>
           <StyledErrorBoundaryWrapper>
-            <StyledErrorMessage>Something went wrong</StyledErrorMessage>
+            <StyledErrorMessage>{ERROR_MESSAGES.SOMETHING_WENT_WRONG}</StyledErrorMessage>
             <StyledErrorDetails>{this.state.error?.message || 'An unexpected error occurred.'}</StyledErrorDetails>
-            <StyledRetryButton onClick={this.handleRetry}>Try Again</StyledRetryButton>
+            <StyledRetryButton onClick={this.handleRetry}>{ERROR_MESSAGES.TRY_AGAIN}</StyledRetryButton>
           </StyledErrorBoundaryWrapper>
         </>
       );
